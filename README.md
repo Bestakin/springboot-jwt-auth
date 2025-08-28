@@ -20,14 +20,14 @@ A Spring Boot REST API that secures an e-commerce backend with JWT authenticatio
 - Clean security filters: authentication (login) + authorization (verify token)
   
 ## Quick Start
-1) Run the app
-    # from project root
+### 1) Run the app
+   From project root
 ./mvnw spring-boot:run
-App starts on http://localhost:8080.
+App starts at: http://localhost:8080.
 
 H2 in-memory DB is used (fresh on each run). Optional console: http://localhost:8080/h2-console (if enabled).
 
-2) Create user (public)
+### 2) Create user (public)
    POST http://localhost:8080/api/user/create
    Body (JSON):
    {
@@ -36,7 +36,10 @@ H2 in-memory DB is used (fresh on each run). Optional console: http://localhost:
   "confirmPassword": "secret123"
 }
 
-3) Login (get JWT)
+Result: <img width="1065" height="661" alt="image" src="https://github.com/user-attachments/assets/a06dd319-d213-491b-9a9e-7cde168fb009" />
+
+
+### 3) Login (get JWT)
    POST http://localhost:8080/login
    Body (JSON):
    {
@@ -47,7 +50,14 @@ H2 in-memory DB is used (fresh on each run). Optional console: http://localhost:
 Response body includes:
 { "token": "Bearer eyJhbGciOi..." }
 
+Result: <img width="1073" height="647" alt="image" src="https://github.com/user-attachments/assets/0b3962ad-77da-4b9d-850b-b61b6009d565" />
 
-4) <img width="1461" height="201" alt="image" src="https://github.com/user-attachments/assets/6089488a-094c-4e4d-beac-73c4f6eecb1e" />
+### 4) Access protected endpoint
+    GET http://localhost:8080/api/user/alice
+    Add Header:
+        Authorization: Bearer <token>
+
+Result: <img width="1067" height="650" alt="image" src="https://github.com/user-attachments/assets/9d871732-f552-437d-8de4-fb3ac017810e" />
+
 
 
